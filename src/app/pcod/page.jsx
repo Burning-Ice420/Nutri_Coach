@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -70,7 +70,13 @@ const PCOD = () => {
                 wellness.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="text-lg px-8 py-4">
+                <Button
+                  size="lg"
+                  className="text-lg px-8 py-4"
+                  onClick={() => {
+                    window.location.href = "/pcod#plans-section";
+                  }}
+                >
                   Start Your Healing
                 </Button>
                 <Button

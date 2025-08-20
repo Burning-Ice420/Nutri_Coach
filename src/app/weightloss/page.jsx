@@ -40,11 +40,44 @@ const WeightLoss = () => {
     "Professional guidance and support",
   ];
   const plans = [
-    { title: "10 Days Trial Plan", price: "₹499" },
-    { title: "1 Month Plan", price: "₹3000" },
-    { title: "3 Months Plan", price: "₹8000" },
-    { title: "6 Months Plan", price: "₹16000" },
-    { title: "12 Months Plan", price: "₹25000" },
+    {
+      title: "7 Days Trial Plan",
+      price: "₹250",
+      offers: [
+        "Kickstart your journey with a personalized meal plan",
+        "WhatsApp support",
+      ],
+    },
+    {
+      title: "1 Month Plan",
+      price: "₹3000",
+      discount: "₹2500",
+      offers: [
+        "Weekly progress tracking",
+        "Diet adjustments",
+        "Free recipe eBook",
+      ],
+    },
+    {
+      title: "2 Months Plan",
+      price: "₹4000",
+      discount: "₹3500",
+      offers: [
+        "Custom workout guide",
+        "Bi-weekly nutrition calls",
+        "Exclusive access to our community",
+      ],
+    },
+    {
+      title: "3 Months Plan",
+      price: "₹6000",
+      discount: "₹5500",
+      offers: [
+        "Monthly body analysis",
+        "Unlimited chat support",
+        "Free supplement guide",
+      ],
+    },
   ];
 
   const features = [
@@ -87,7 +120,13 @@ const WeightLoss = () => {
                 plans.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="text-lg px-8 py-4">
+                <Button
+                  size="lg"
+                  className="text-lg px-8 py-4"
+                  onClick={() => {
+                    window.location.href = "/weightloss#plans-section";
+                  }}
+                >
                   Start Your Journey
                 </Button>
               </div>
@@ -189,9 +228,26 @@ const WeightLoss = () => {
                 <CardTitle className="text-2xl font-bold mb-2 text-primary">
                   {plan.title}
                 </CardTitle>
-                <CardDescription className="text-lg text-muted-foreground mb-4">
-                  {plan.price}
+                <CardDescription className="text-lg text-muted-foreground mb-2">
+                  {plan.discount ? (
+                    <>
+                      <span className="line-through text-destructive mr-2">
+                        {plan.price}
+                      </span>
+                      <span className="font-bold text-xl text-primary">
+                        {plan.discount}
+                      </span>
+                    </>
+                  ) : (
+                    <span className="font-bold text-xl text-primary">
+                      {plan.price}
+                    </span>
+                  )}
                 </CardDescription>
+                <ul className="mb-2 text-sm text-accent font-medium text-left list-disc list-inside">
+                  {plan.offers &&
+                    plan.offers.map((offer, i) => <li key={i}>{offer}</li>)}
+                </ul>
               </CardHeader>
               <CardContent className="pt-0">
                 <Button

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -71,7 +71,13 @@ const Wedding = () => {
                 healthy, sustainable methods.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="text-lg px-8 py-4">
+                <Button
+                  size="lg"
+                  className="text-lg px-8 py-4"
+                  onClick={() => {
+                    window.location.href = "/wedding#plans-section";
+                  }}
+                >
                   Start Your Glow-Up
                 </Button>
                 <Button
@@ -207,8 +213,7 @@ const Wedding = () => {
           type="Wedding"
         />
       </section>
-            <Footer />
-
+      <Footer />
     </div>
   );
 };

@@ -52,8 +52,7 @@ const TestimonialsSection = () => {
       weight: "Lost 15 kg",
       text: "Poonam's personalized diet plan transformed my life. I not only lost weight but gained confidence and energy!",
       rating: 5,
-      photo:
-        "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80",
+      photo: "/p1.png"
     },
     {
       name: "Ravi Kumar",
@@ -61,8 +60,7 @@ const TestimonialsSection = () => {
       weight: "Lost 22 kg",
       text: "The PCOD management program helped me regulate my hormones naturally. Best decision ever!",
       rating: 5,
-      photo:
-        "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=200&q=80",
+      photo: "/p2.png"
     },
     {
       name: "Anita Desai",
@@ -70,8 +68,7 @@ const TestimonialsSection = () => {
       weight: "Lost 12 kg",
       text: "Wedding diet plan made me look stunning on my special day. Thank you for the amazing support!",
       rating: 5,
-      photo:
-        "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=200&q=80",
+      photo: "/p3.png",
     },
   ];
 

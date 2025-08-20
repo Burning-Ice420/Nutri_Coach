@@ -20,7 +20,7 @@ const ServicesSection = () => {
       title: "PCOD Management",
       description:
         "Specialized diet plans to manage PCOD symptoms and improve hormonal health.",
-      image: "/services/S1.PNG",
+      image: "/services/main.png",
       href: "#pcod",
     },
     {
@@ -33,7 +33,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-background">
+    <section id="services-section" className="py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h2>
@@ -69,6 +69,14 @@ const ServicesSection = () => {
                   <Button
                     variant="outline"
                     className="hover:bg-primary hover:text-primary-foreground"
+                    onClick={() => {
+                      if (service.title === "Weight Management")
+                        window.location.href = "/weightloss";
+                      else if (service.title === "PCOD Management")
+                        window.location.href = "/pcod";
+                      else if (service.title === "Wedding Diet Plans")
+                        window.location.href = "/wedding";
+                    }}
                   >
                     Learn More
                   </Button>

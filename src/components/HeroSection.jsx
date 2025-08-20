@@ -39,16 +39,44 @@ const HeroSection = () => {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
-                variant="trial"
+                variant="default"
                 size="lg"
-                className="text-lg px-8 py-6"
+                className="text-lg px-8 py-6 font-bold shadow-xl border-2 border-primary bg-gradient-to-r from-primary to-accent text-primary-foreground hover:scale-105 hover:shadow-2xl transition-all duration-200"
                 onClick={handleFreeTrialClick}
               >
-                Start 7 days trial in just 250 rupees
+                <span className="inline-flex items-center gap-2">
+                  <svg
+                    width="28"
+                    height="28"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-accent"
+                  >
+                    <path d="M12 5v14M5 12h14" />
+                  </svg>
+                  Start 7 days trial in just{" "}
+                  <span className="bg-accent text-white px-2 py-1 rounded-lg font-extrabold">
+                    ₹250
+                  </span>
+                </span>
               </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-6">
+              <Button
+                variant="outline"
+                size="lg"
+                className="text-lg px-8 py-6"
+                onClick={() => {
+                  const el = document.getElementById("services-section");
+                  if (el) {
+                    el.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+              >
                 <Play className="w-5 h-5 mr-2" />
-                Explore Programs
+                Explore Services
               </Button>
             </div>
 
