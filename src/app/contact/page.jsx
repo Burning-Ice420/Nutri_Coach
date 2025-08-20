@@ -56,7 +56,7 @@ const Contact = () => {
             </div>
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80"
+                src="/contact.jpg"
                 alt="Contact Us"
                 className="rounded-2xl shadow-2xl"
               />
