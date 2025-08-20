@@ -69,14 +69,7 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/about"
-                  className="text-secondary-foreground/80 hover:text-secondary-foreground transition-colors"
-                >
-                  About Us
-                </Link>
-              </li>
+           
               <li>
                 <Link
                   href="/contact"
@@ -93,14 +86,7 @@ const Footer = () => {
                   Careers
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/privacy-policy"
-                  className="text-secondary-foreground/80 hover:text-secondary-foreground transition-colors"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
+           
             </ul>
           </div>
 
@@ -127,16 +113,9 @@ const Footer = () => {
             © 2024 Nutri Coach. All rights reserved.
           </p>
           <div className="flex space-x-4 mt-4 md:mt-0">
+      
             <Link
-              href="https://facebook.com"
-              className="text-secondary-foreground/80 hover:text-secondary-foreground transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Facebook
-            </Link>
-            <Link
-              href="https://youtube.com"
+              href="https://www.instagram.com/nutricoachofficial/"
               className="text-secondary-foreground/80 hover:text-secondary-foreground transition-colors"
               target="_blank"
               rel="noopener noreferrer"
@@ -144,12 +123,12 @@ const Footer = () => {
               YouTube
             </Link>
             <Link
-              href="https://linkedin.com"
+              href="https://www.instagram.com/nutricoachofficial/"
               className="text-secondary-foreground/80 hover:text-secondary-foreground transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
-              LinkedIn
+              Instagram
             </Link>
           </div>
         </div>

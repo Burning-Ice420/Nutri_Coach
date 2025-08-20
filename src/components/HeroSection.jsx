@@ -1,5 +1,7 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
-import { Play, Smartphone } from "lucide-react";
+import { Play, Smartphone, TrendingUp, Users, Award } from "lucide-react";
 import Image from "next/image";
 import BuyPlanModal from "@/components/BuyPlanModal";
 import { useState } from "react";
@@ -10,96 +12,75 @@ const HeroSection = () => {
     title: "7 Days Trial",
     price: "₹250",
   });
+
   const handleFreeTrialClick = () => {
     setOpen(true);
   };
+
   return (
     <section className="relative min-h-screen bg-gradient-hero overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
+      {/* Navigation Bar */}
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[75vh]">
           {/* Left Column - Content */}
-          <div className="space-y-8 lg:pr-8">
-            <div className="space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                Your health{" "}
-                <span className="text-primary bg-gradient-primary bg-clip-text text-transparent">
-                  Journey
-                </span>
+          <div className="space-y-8 lg:pr-12">
+            <div className="space-y-8">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-800">
+                Transform Your Health{" "}
+                <span className="text-primary">Journey with</span>
                 <br />
-                With our expert{" "}
-                <span className="text-secondary">Dietitian</span>
+                <span className="text-secondary">NutriCoach.</span>
               </h1>
 
-              <p className="text-lg text-muted-foreground max-w-lg">
-                Transform your life with personalized nutrition plans designed
-                by expert Nutri Coach. Join thousands who have achieved lasting
-                health results.
+              <p className="text-lg text-gray-600 max-w-lg leading-relaxed">
+                We provide personalized nutrition plans and expert guidance to
+                help you achieve lasting health results and transform your
+                lifestyle.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-6">
               <Button
-                variant="default"
                 size="lg"
-                className="text-lg px-8 py-6 font-bold shadow-xl border-2 border-primary bg-gradient-to-r from-primary to-accent text-primary-foreground hover:scale-105 hover:shadow-2xl transition-all duration-200"
+                className="text-base px-8 py-4 bg-primary hover:bg-primary-light text-primary-foreground rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2"
                 onClick={handleFreeTrialClick}
               >
-                <span className="inline-flex items-center gap-2">
-                  <svg
-                    width="28"
-                    height="28"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
+                Start Your Journey
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="text-accent"
-                  >
-                    <path d="M12 5v14M5 12h14" />
-                  </svg>
-                  Start 7 days trial in just{" "}
-                  <span className="bg-accent text-white px-2 py-1 rounded-lg font-extrabold">
-                    ₹250
-                  </span>
-                </span>
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="text-lg px-8 py-6"
-                onClick={() => {
-                  const el = document.getElementById("services-section");
-                  if (el) {
-                    el.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
-              >
-                <Play className="w-5 h-5 mr-2" />
-                Explore Services
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
               </Button>
             </div>
 
             {/* App Download Buttons */}
-            <div className="space-y-4">
-              <p className="text-sm text-muted-foreground font-medium">
+            <div className="space-y-4 pt-4">
+              <p className="text-sm text-gray-500 font-medium">
                 Download Our App
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <button className="flex items-center space-x-3 bg-card border rounded-lg px-4 py-3 hover:shadow-md transition-shadow">
-                  <Smartphone className="w-8 h-8 text-primary" />
+                <button className="flex items-center space-x-3 bg-white border border-gray-200 rounded-lg px-4 py-3 hover:shadow-md transition-shadow">
+                  <Smartphone className="w-8 h-8 text-secondary" />
                   <div className="text-left">
-                    <p className="text-xs text-muted-foreground">GET IT ON</p>
-                    <p className="font-semibold">Google Play</p>
+                    <p className="text-xs text-gray-500">GET IT ON</p>
+                    <p className="font-semibold text-gray-800">Google Play</p>
                   </div>
                 </button>
-                <button className="flex items-center space-x-3 bg-card border rounded-lg px-4 py-3 hover:shadow-md transition-shadow">
-                  <Smartphone className="w-8 h-8 text-primary" />
+                <button className="flex items-center space-x-3 bg-white border border-gray-200 rounded-lg px-4 py-3 hover:shadow-md transition-shadow">
+                  <Smartphone className="w-8 h-8 text-secondary" />
                   <div className="text-left">
-                    <p className="text-xs text-muted-foreground">
-                      Download on the
-                    </p>
-                    <p className="font-semibold">App Store</p>
+                    <p className="text-xs text-gray-500">Download on the</p>
+                    <p className="font-semibold text-gray-800">App Store</p>
                   </div>
                 </button>
               </div>
@@ -109,44 +90,65 @@ const HeroSection = () => {
             <div className="flex space-x-4">
               <a
                 href="https://www.instagram.com/nutricoachofficial/"
-                className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors"
+                className="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center hover:bg-secondary/30 transition-colors"
               >
-                <span className="text-primary font-bold">I</span>
+                <span className="text-secondary font-bold">I</span>
               </a>
               <a
                 href="https://www.youtube.com/@NutriCoachOffical"
-                className="w-10 h-10 bg-destructive/10 rounded-full flex items-center justify-center hover:bg-destructive/20 transition-colors"
+                className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center hover:bg-red-200 transition-colors"
               >
-                <Play className="w-5 h-5 text-destructive" />
+                <Play className="w-5 h-5 text-red-600" />
               </a>
-              {/* <a
-                href="#"
-                className="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center hover:bg-secondary/20 transition-colors"
-              >
-                <span className="text-secondary font-bold">in</span>
-              </a> */}
             </div>
           </div>
 
-          {/* Right Column - Hero Image */}
-          <div className="relative">
+          {/* Right Column - Hero Image with Floating Elements */}
+          <div className="relative flex justify-center lg:justify-end">
             <div className="relative z-10">
-              <img
-                src="/hero.png"
-                alt="Nutri Coach"
-                className="w-full h-auto rounded-2xl shadow-2xl"
-              />
-              <div className="absolute -top-[60px] -right-[70px]   rounded-2xl p-4 ">
-                <div className="text-center">
-                  <Image
-                    src="/logo.png"
-                    width={150}
-                    height={150}
-                    alt="Nutri Coach"
+              {/* Main Hero Image */}
+              <div className="relative w-[200px] h-96 lg:w-full lg:h-[500px]">
+                <img
+                  src="/hero.png"
+                  alt="Professional nutritionist"
+                  className="w-full h-full object-cover rounded-2xl shadow-2xl"
+                />
+
+                {/* Floating Statistics Circle - Top Right */}
+                <div className="absolute -top-6 -right-6 w-30 h-30 bg-teal-700 border-6 border-white rounded-full flex flex-col items-center justify-center text-white shadow-xl">
+                  <TrendingUp className="w-6 h-6 mb-1 text-accent" />
+                  <span className="text-xl font-bold text-accent">98%</span>
+                  <span className="text-xs">Success</span>
+                </div>
+
+                {/* Floating Icon Circle - Left Side */}
+                <div className="absolute top-1/3 -left-6 w-20 h-20 bg-gray-600 rounded-full flex items-center justify-center text-white shadow-lg">
+                  <Award className="w-8 h-8 text-accent" />
+                </div>
+
+                {/* Floating Profile Circle - Bottom Left */}
+                {/* <div className="absolute -bottom-6 left-6 w-20 h-20 rounded-full overflow-hidden shadow-lg border-4 border-white">
+                  <img
+                    src="https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&cs=tinysrgb&w=200"
+                    alt="Client testimonial"
+                    className="w-full h-full object-cover"
                   />
+                </div> */}
+
+                {/* Logo positioned at top left */}
+                <div className="absolute -top-8 -left-8">
+                  <div className="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
+                      <span className="text-white font-bold text-lg">NC</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+
+            {/* Background decorative elements */}
+            <div className="absolute top-1/3 right-1/4 w-24 h-24 bg-blue-100 rounded-full opacity-40 -z-10"></div>
+            <div className="absolute bottom-1/3 left-1/4 w-20 h-20 bg-secondary/10 rounded-full opacity-40 -z-10"></div>
           </div>
         </div>
       </div>
@@ -157,15 +159,6 @@ const HeroSection = () => {
         selectedPlan={selectedPlan}
         type="Weight Loss"
       />
-      {/* Bottom Wave */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 120" className="w-full h-auto">
-          <path
-            fill="hsl(175 70% 50%)"
-            d="M0,96L48,85.3C96,75,192,53,288,58.7C384,64,480,96,576,96C672,96,768,64,864,58.7C960,53,1056,75,1152,85.3C1248,96,1344,96,1392,96L1440,96L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"
-          />
-        </svg>
-      </div>
     </section>
   );
 };

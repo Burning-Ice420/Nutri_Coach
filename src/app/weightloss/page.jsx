@@ -39,6 +39,18 @@ const WeightLoss = () => {
     "Long-term lifestyle changes",
     "Professional guidance and support",
   ];
+  const ribbons = [
+    "LIMITED OFFER!",
+    "MOST POPULAR!",
+    "PREMIUM!",
+    "MOST EFFECTIVE!",
+  ];
+  const ribbonColors = [
+    "bg-emerald-600",
+    "bg-orange-600",
+    "bg-teal-600",
+    "bg-orange-700",
+  ];
   const plans = [
     {
       title: "7 Days Trial Plan",
@@ -208,9 +220,9 @@ const WeightLoss = () => {
       </section>
 
       {/* Plans Section */}
-      <section id="plans-section" className="py-16 bg-background">
-        <div className="max-w-3xl mx-auto text-center mb-8">
-          <h2 className="text-4xl md:text-5xl font-bold mb-2">
+      <section id="plans-section" className="py-20 bg-background">
+        <div className="max-w-3xl mx-auto text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Weight Loss Plans
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -218,41 +230,54 @@ const WeightLoss = () => {
             goals and lifestyle.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
           {plans.map((plan, index) => (
             <Card
               key={index}
-              className="rounded-2xl shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 border-0 bg-card flex flex-col justify-between"
+              className="relative flex flex-col justify-between rounded-xl border shadow-lg hover:shadow-2xl transition-all duration-300"
             >
-              <CardHeader className="text-center pb-0">
-                <CardTitle className="text-2xl font-bold mb-2 text-primary">
+              {/* Top Ribbon */}
+              <div
+                className={`absolute top-0 left-0 right-0 text-center py-2 text-white text-sm font-semibold rounded-t-xl ${
+                  ribbonColors[index % ribbonColors.length]
+                }`}
+              >
+                {ribbons[index % ribbons.length]}
+              </div>
+
+              <CardContent className="pt-14 pb-6 px-6 flex flex-col h-full">
+                {/* Title */}
+                <h3 className="text-xl font-bold text-center mb-4">
                   {plan.title}
-                </CardTitle>
-                <CardDescription className="text-lg text-muted-foreground mb-2">
-                  {plan.discount ? (
-                    <>
-                      <span className="line-through text-destructive mr-2">
-                        {plan.price}
-                      </span>
-                      <span className="font-bold text-xl text-primary">
-                        {plan.discount}
-                      </span>
-                    </>
-                  ) : (
-                    <span className="font-bold text-xl text-primary">
+                </h3>
+
+                {/* Price */}
+                <div className="text-center mb-6">
+                  <span className="text-3xl font-extrabold text-primary">
+                    {plan.discount ? plan.discount : plan.price}
+                  </span>
+                  {plan.discount && (
+                    <div className="text-lg line-through text-gray-400">
                       {plan.price}
-                    </span>
+                    </div>
                   )}
-                </CardDescription>
-                <ul className="mb-2 text-sm text-accent font-medium text-left list-disc list-inside">
-                  {plan.offers &&
-                    plan.offers.map((offer, i) => <li key={i}>{offer}</li>)}
+                </div>
+
+                {/* Features */}
+                <ul className="space-y-3 text-sm text-gray-700 flex-1">
+                  {plan.offers?.map((offer, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-500 mt-0.5" />
+                      <span>{offer}</span>
+                    </li>
+                  ))}
                 </ul>
-              </CardHeader>
-              <CardContent className="pt-0">
+
+                {/* Button */}
                 <Button
                   variant="default"
-                  className="w-full text-lg py-3 rounded-xl"
+                  className="w-full mt-6 py-3 rounded-lg font-semibold bg-gradient-to-r from-green-500 to-green-600 text-white shadow-md hover:brightness-110 transition-all"
                   onClick={() => {
                     setSelectedPlan(plan);
                     setOpen(true);

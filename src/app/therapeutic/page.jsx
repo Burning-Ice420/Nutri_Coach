@@ -14,7 +14,7 @@ import { CheckCircle, Activity, Shield, HeartHandshake } from "lucide-react";
 import { useState } from "react";
 
 const Therapeutic = () => {
-  const [open, setOpen] =useState(false);
+  const [open, setOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
 
   const handleChange = (e) => {
@@ -27,15 +27,18 @@ const Therapeutic = () => {
     setError("");
     setSuccess("");
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/register-user`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...form,
-          frontEndClient: "Nutri_Coach",
-          plantype: `Therapeutic - ${selectedPlan.title} (${selectedPlan.price})`,
-        }),
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/user/register-user`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...form,
+            frontEndClient: "Nutri_Coach",
+            plantype: `Therapeutic - ${selectedPlan.title} (${selectedPlan.price})`,
+          }),
+        }
+      );
       if (!res.ok) throw new Error("Failed to submit");
       setSuccess("Submitted successfully!");
       setForm({ name: "", email: "", phoneNumber: "", goal: "" });
@@ -74,13 +77,50 @@ const Therapeutic = () => {
     },
   ];
 
-  const therapeuticPlans = [
-    { title: "10 Days Trial Plan", price: "₹499" },
-    { title: "1 Month Plan", price: "₹4500" },
-    { title: "2 Months Plan", price: "₹9000" },
-    { title: "3 Months Plan", price: "₹11999" },
-    { title: "6 Months Plan", price: "₹20000" },
-    { title: "12 Months Plan", price: "₹35000" },
+  const plans = [
+    {
+      title: "Therapeutic 1 Month Plan",
+      price: "₹4000",
+      offers: [
+        "Personalized therapeutic diet plan",
+        "Weekly progress tracking & adjustments",
+        "WhatsApp support for queries",
+      ],
+    },
+    {
+      title: "Therapeutic 2 Months Plan",
+      price: "₹7000",
+      offers: [
+        "Customized diet & lifestyle plan",
+        "Bi-weekly progress reviews",
+        "Guidance for managing specific health concerns",
+        "Free therapeutic recipe guide",
+      ],
+    },
+    {
+      title: "Therapeutic 3 Months Plan",
+      price: "₹9999",
+      offers: [
+        "Complete therapeutic nutrition program",
+        "Monthly body analysis & detailed reports",
+        "Unlimited chat & call support",
+        "Holistic lifestyle & stress management tips",
+        "Exclusive healing-focused meal plans",
+      ],
+    },
+  ];
+
+  const ribbons = [
+    "LIMITED OFFER!",
+    "MOST POPULAR!",
+    "PREMIUM!",
+    "MOST EFFECTIVE!",
+  ];
+  const ribbonColors = [
+    "bg-emerald-600",
+    "bg-orange-600",
+    "bg-teal-600",
+    "bg-orange-700",
   ];
 
   return (
@@ -101,13 +141,22 @@ const Therapeutic = () => {
                 medical conditions.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="text-lg px-8 py-4">
+                <Button
+                  size="lg"
+                  className="text-lg px-8 py-4"
+                  onClick={() => {
+                    window.location.href = "#plans-section";
+                  }}
+                >
                   Get Medical Support
                 </Button>
                 <Button
                   variant="outline"
                   size="lg"
                   className="text-lg px-8 py-4"
+                  onClick={() => {
+                    window.location.href = "#plans-section";
+                  }}
                 >
                   Learn About Conditions
                 </Button>
@@ -174,50 +223,66 @@ const Therapeutic = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-hero">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Get Medical Nutrition Support
-          </h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Work with our qualified to manage your health condition through
-            proper nutrition.
-          </p>
-          <Button size="lg" className="text-lg px-8 py-4">
-            Book Medical Consultation
-          </Button>
-        </div>
-      </section>
 
       {/* Plans Section - moved before Footer, improved CSS */}
-      <section className="py-16 bg-background">
-        <div className="max-w-3xl mx-auto text-center mb-8">
-          <h2 className="text-4xl md:text-5xl font-bold mb-2">
-            Therapeutic Nutrition Plans
+      <section id="plans-section" className="py-20 bg-background">
+        <div className="max-w-3xl mx-auto text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Therapeutic Plans
           </h2>
           <p className="text-lg text-muted-foreground">
-            Choose from our medical nutrition therapy plans for chronic
-            conditions.
+            Choose from our tailored therapeutic plans designed to fit your
+            goals and lifestyle.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {therapeuticPlans.map((plan, idx) => (
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          {plans.map((plan, index) => (
             <Card
-              key={idx}
-              className="rounded-2xl shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 border-0 bg-card flex flex-col justify-between"
+              key={index}
+              className="relative flex flex-col justify-between rounded-xl border shadow-lg hover:shadow-2xl transition-all duration-300"
             >
-              <CardHeader className="text-center pb-0">
-                <CardTitle className="text-2xl font-bold mb-2 text-primary">
+              {/* Top Ribbon */}
+              <div
+                className={`absolute top-0 left-0 right-0 text-center py-2 text-white text-sm font-semibold rounded-t-xl ${
+                  ribbonColors[index % ribbonColors.length]
+                }`}
+              >
+                {ribbons[index % ribbons.length]}
+              </div>
+
+              <CardContent className="pt-14 pb-6 px-6 flex flex-col h-full">
+                {/* Title */}
+                <h3 className="text-xl font-bold text-center mb-4">
                   {plan.title}
-                </CardTitle>
-                <CardDescription className="text-lg text-muted-foreground mb-4">
-                  {plan.price}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="pt-0">
+                </h3>
+
+                {/* Price */}
+                <div className="text-center mb-6">
+                  <span className="text-3xl font-extrabold text-primary">
+                    {plan.discount ? plan.discount : plan.price}
+                  </span>
+                  {plan.discount && (
+                    <div className="text-lg line-through text-gray-400">
+                      {plan.price}
+                    </div>
+                  )}
+                </div>
+
+                {/* Features */}
+                <ul className="space-y-3 text-sm text-gray-700 flex-1">
+                  {plan.offers?.map((offer, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-500 mt-0.5" />
+                      <span>{offer}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Button */}
                 <Button
                   variant="default"
-                  className="w-full text-lg py-3 rounded-xl"
+                  className="w-full mt-6 py-3 rounded-lg font-semibold bg-gradient-to-r from-green-500 to-green-600 text-white shadow-md hover:brightness-110 transition-all"
                   onClick={() => {
                     setSelectedPlan(plan);
                     setOpen(true);
