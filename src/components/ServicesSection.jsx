@@ -13,24 +13,21 @@ const ServicesSection = () => {
       title: "Weight Management",
       description:
         "Sustainable weight loss through personalized nutrition plans and lifestyle coaching.",
-      image:
-        "https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=600&q=80",
+      image: "/services/weight.jpg",
       href: "#weight-loss",
     },
     {
       title: "PCOD Management",
       description:
         "Specialized diet plans to manage PCOD symptoms and improve hormonal health.",
-      image:
-        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
+      image: "/services/S1.PNG",
       href: "#pcod",
     },
     {
       title: "Wedding Diet Plans",
       description:
         "Look your best on your special day with customized pre-wedding nutrition plans.",
-      image:
-        "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
+      image: "/services/wedding.jpeg",
       href: "#wedding",
     },
   ];
@@ -41,7 +38,7 @@ const ServicesSection = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Programs offered by Dietitian Poonam Sagar
+            Programs offered by Nutri Coach
           </p>
         </div>
 

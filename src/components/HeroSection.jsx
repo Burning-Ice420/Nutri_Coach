@@ -1,7 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { Play, Smartphone } from "lucide-react";
+import Image from "next/image";
+import BuyPlanModal from "@/components/BuyPlanModal";
+import { useState } from "react";
 
 const HeroSection = () => {
+  const [open, setOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState({
+    title: "7 Days Trial",
+    price: "₹250",
+  });
+  const handleFreeTrialClick = () => {
+    setOpen(true);
+  };
   return (
     <section className="relative min-h-screen bg-gradient-hero overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -21,14 +32,19 @@ const HeroSection = () => {
 
               <p className="text-lg text-muted-foreground max-w-lg">
                 Transform your life with personalized nutrition plans designed
-                by expert dietitian Poonam Sagar. Join thousands who have
-                achieved lasting health results.
+                by expert Nutri Coach. Join thousands who have achieved lasting
+                health results.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="trial" size="lg" className="text-lg px-8 py-6">
-                Start Free Trial
+              <Button
+                variant="trial"
+                size="lg"
+                className="text-lg px-8 py-6"
+                onClick={handleFreeTrialClick}
+              >
+                Start 7 days trial in just 250 rupees
               </Button>
               <Button variant="outline" size="lg" className="text-lg px-8 py-6">
                 <Play className="w-5 h-5 mr-2" />
@@ -64,23 +80,23 @@ const HeroSection = () => {
             {/* Social Links */}
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.instagram.com/nutricoachofficial/"
                 className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors"
               >
-                <span className="text-primary font-bold">f</span>
+                <span className="text-primary font-bold">I</span>
               </a>
               <a
-                href="#"
+                href="https://www.youtube.com/@NutriCoachOffical"
                 className="w-10 h-10 bg-destructive/10 rounded-full flex items-center justify-center hover:bg-destructive/20 transition-colors"
               >
                 <Play className="w-5 h-5 text-destructive" />
               </a>
-              <a
+              {/* <a
                 href="#"
                 className="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center hover:bg-secondary/20 transition-colors"
               >
                 <span className="text-secondary font-bold">in</span>
-              </a>
+              </a> */}
             </div>
           </div>
 
@@ -89,13 +105,17 @@ const HeroSection = () => {
             <div className="relative z-10">
               <img
                 src="/hero.png"
-                alt="Dietitian Poonam Sagar"
+                alt="Nutri Coach"
                 className="w-full h-auto rounded-2xl shadow-2xl"
               />
-              <div className="absolute -top-6 -right-6 bg-secondary text-secondary-foreground rounded-2xl p-4 shadow-lg">
+              <div className="absolute -top-[60px] -right-[70px]   rounded-2xl p-4 ">
                 <div className="text-center">
-                  <p className="text-3xl font-bold">POONAM</p>
-                  <p className="text-sm font-medium">SAGAR</p>
+                  <Image
+                    src="/logo.png"
+                    width={150}
+                    height={150}
+                    alt="Nutri Coach"
+                  />
                 </div>
               </div>
             </div>
@@ -103,6 +123,12 @@ const HeroSection = () => {
         </div>
       </div>
 
+      <BuyPlanModal
+        open={open}
+        setOpen={setOpen}
+        selectedPlan={selectedPlan}
+        type="Weight Loss"
+      />
       {/* Bottom Wave */}
       <div className="absolute bottom-0 left-0 right-0">
         <svg viewBox="0 0 1440 120" className="w-full h-auto">

@@ -1,3 +1,4 @@
+"use client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -8,9 +9,28 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import BuyPlanModal from "@/components/BuyPlanModal";
 import { CheckCircle, Scale, Target, TrendingDown } from "lucide-react";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const WeightLoss = () => {
+  useEffect(() => {
+    if (
+      typeof window !== "undefined" &&
+      localStorage.getItem("scrollToPlans") === "true"
+    ) {
+      localStorage.removeItem("scrollToPlans");
+      setTimeout(() => {
+        const el = document.getElementById("plans-section");
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 200);
+    }
+  }, []);
+  const [open, setOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState(null);
   const benefits = [
     "Sustainable weight loss without crash diets",
     "Personalized meal plans based on your lifestyle",
@@ -18,6 +38,13 @@ const WeightLoss = () => {
     "Healthy relationship with food",
     "Long-term lifestyle changes",
     "Professional guidance and support",
+  ];
+  const plans = [
+    { title: "10 Days Trial Plan", price: "₹499" },
+    { title: "1 Month Plan", price: "₹3000" },
+    { title: "3 Months Plan", price: "₹8000" },
+    { title: "6 Months Plan", price: "₹16000" },
+    { title: "12 Months Plan", price: "₹25000" },
   ];
 
   const features = [
@@ -42,10 +69,10 @@ const WeightLoss = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Header />
 
-      {/* Hero Section */}
+      {/* Hero Section with Image */}
       <section className="relative bg-gradient-hero py-20 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -63,18 +90,11 @@ const WeightLoss = () => {
                 <Button size="lg" className="text-lg px-8 py-4">
                   Start Your Journey
                 </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="text-lg px-8 py-4"
-                >
-                  View Success Stories
-                </Button>
               </div>
             </div>
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=800&q=80"
+                src="/services/weight.jpg"
                 alt="Weight Loss Consultation"
                 className="rounded-2xl shadow-2xl"
               />
@@ -83,7 +103,7 @@ const WeightLoss = () => {
         </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* Why Choose Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -146,6 +166,55 @@ const WeightLoss = () => {
             Book Free Consultation
           </Button>
         </div>
+      </section>
+
+      {/* Plans Section */}
+      <section id="plans-section" className="py-16 bg-background">
+        <div className="max-w-3xl mx-auto text-center mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold mb-2">
+            Weight Loss Plans
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Choose from our tailored weight loss plans designed to fit your
+            goals and lifestyle.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {plans.map((plan, index) => (
+            <Card
+              key={index}
+              className="rounded-2xl shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 border-0 bg-card flex flex-col justify-between"
+            >
+              <CardHeader className="text-center pb-0">
+                <CardTitle className="text-2xl font-bold mb-2 text-primary">
+                  {plan.title}
+                </CardTitle>
+                <CardDescription className="text-lg text-muted-foreground mb-4">
+                  {plan.price}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <Button
+                  variant="default"
+                  className="w-full text-lg py-3 rounded-xl"
+                  onClick={() => {
+                    setSelectedPlan(plan);
+                    setOpen(true);
+                  }}
+                >
+                  Buy Now
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        <BuyPlanModal
+          open={open}
+          setOpen={setOpen}
+          selectedPlan={selectedPlan}
+          type="Weight Loss"
+        />
       </section>
 
       <Footer />

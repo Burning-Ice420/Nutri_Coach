@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import Link from "next/link";
 
 const Header = () => {
@@ -8,7 +9,7 @@ const Header = () => {
     { name: "PCOD", href: "/pcod" },
     { name: "Wedding Plan", href: "/wedding" },
     { name: "Therapeutic Plan", href: "/therapeutic" },
-    { name: "All Plans", href: "/allplans" },
+    // { name: "All Plans", href: "/allplans" },
     { name: "Contact us", href: "/contact" },
     { name: "Careers", href: "/careers" },
   ];
@@ -19,14 +20,15 @@ const Header = () => {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">
-                  P
-                </span>
-              </div>
+             
               <div>
-                <h1 className="text-xl font-bold text-foreground">Dietitian</h1>
-                <p className="text-primary font-semibold">Poonam Sagar</p>
+                <Image
+                  src="/logo.png"
+                  alt="Logo"
+                  width={85}
+                  height={85}
+                  className="rounded-full"
+                />
               </div>
             </div>
           </div>

@@ -1,3 +1,4 @@
+"use client"
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -8,9 +9,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import BuyPlanModal from "@/components/BuyPlanModal";
 import { CheckCircle, Heart, Shield, Zap } from "lucide-react";
+import { useState } from "react";
 
 const PCOD = () => {
+  const [open, setOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState(null);
   const benefits = [
     "Hormonal balance through nutrition",
     "Natural management of PCOD symptoms",
@@ -39,11 +44,18 @@ const PCOD = () => {
     },
   ];
 
+  const pcodPlans = [
+    { title: "10 Days Trial Plan", price: "₹499" },
+    { title: "1 Month Plan", price: "₹4500" },
+    { title: "3 Months Plan", price: "₹11999" },
+    { title: "6 Months Plan", price: "₹20000" },
+    { title: "12 Months Plan", price: "₹35000" },
+  ];
+
   return (
     <div className="min-h-screen">
       <Header />
 
-      {/* Hero Section */}
       <section className="relative bg-gradient-hero py-20 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -72,7 +84,7 @@ const PCOD = () => {
             </div>
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
+                src="/services/s1.png"
                 alt="PCOD Management Consultation"
                 className="rounded-2xl shadow-2xl"
               />
@@ -147,6 +159,54 @@ const PCOD = () => {
       </section>
 
       <Footer />
+      {/* Plans Section - moved before Footer, improved CSS */}
+      <section className="py-16 bg-background">
+        <div className="max-w-3xl mx-auto text-center mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold mb-2">
+            PCOD/PCOS Plans
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Choose from our specialized PCOD/PCOS management plans for your
+            needs.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {pcodPlans.map((plan, idx) => (
+            <Card
+              key={idx}
+              className="rounded-2xl shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 border-0 bg-card flex flex-col justify-between"
+            >
+              <CardHeader className="text-center pb-0">
+                <CardTitle className="text-2xl font-bold mb-2 text-primary">
+                  {plan.title}
+                </CardTitle>
+                <CardDescription className="text-lg text-muted-foreground mb-4">
+                  {plan.price}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <Button
+                  variant="default"
+                  className="w-full text-lg py-3 rounded-xl"
+                  onClick={() => {
+                    setSelectedPlan(plan);
+                    setOpen(true);
+                  }}
+                >
+                  Buy Now
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        <BuyPlanModal
+          open={open}
+          setOpen={setOpen}
+          selectedPlan={selectedPlan}
+          type="PCOD"
+        />
+      </section>
     </div>
   );
 };

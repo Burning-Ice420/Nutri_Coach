@@ -1,3 +1,4 @@
+"use client"
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -8,10 +9,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import BuyPlanModal from "@/components/BuyPlanModal";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Star } from "lucide-react";
+import { useState } from "react";
 
 const AllPlans = () => {
+  const [open, setOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState(null);
   const plans = [
     {
       name: "Weight Management",
@@ -147,12 +152,22 @@ const AllPlans = () => {
                   <Button
                     className="w-full"
                     variant={plan.popular ? "default" : "outline"}
+                    onClick={() => {
+                      setSelectedPlan(plan);
+                      setOpen(true);
+                    }}
                   >
-                    Choose This Plan
+                    Buy Now
                   </Button>
                 </CardContent>
               </Card>
             ))}
+          <BuyPlanModal
+            open={open}
+            setOpen={setOpen}
+            selectedPlan={selectedPlan}
+            type="All Plans"
+          />
           </div>
 
           <div className="text-center mt-16">

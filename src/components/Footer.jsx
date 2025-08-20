@@ -1,8 +1,14 @@
+"use client"
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
+  const handleConsultationClick = () => {
+    window.location.href = "/weightloss#plans-section";
+  };
+
   return (
     <footer className="bg-secondary text-secondary-foreground">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -10,14 +16,8 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">
-                  P
-                </span>
-              </div>
               <div>
-                <h3 className="text-xl font-bold">Dietitian</h3>
-                <p className="text-primary font-semibold">Poonam Sagar</p>
+                <Image src="/logo.png" alt="Logo" width={120} height={120} />
               </div>
             </div>
             <p className="text-secondary-foreground/80">
@@ -110,7 +110,11 @@ const Footer = () => {
             <p className="text-secondary-foreground/80 mb-4">
               Ready to start your health journey?
             </p>
-            <Button variant="default" className="w-full">
+            <Button
+              variant="default"
+              className="w-full"
+              onClick={handleConsultationClick}
+            >
               Book Free Consultation
             </Button>
           </div>
@@ -120,7 +124,7 @@ const Footer = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-secondary-foreground/80 text-sm">
-            © 2024 Dietitian Poonam Sagar. All rights reserved.
+            © 2024 Nutri Coach. All rights reserved.
           </p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             <Link
