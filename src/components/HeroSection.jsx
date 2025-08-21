@@ -132,7 +132,7 @@ const HeroSection = () => {
               {/* Main Hero Image */}
               <div className="relative w-[200px] h-96 lg:w-full lg:h-[500px]">
                 <img
-                  src="/diet.png"
+                  src="/hero.png"
                   alt="Professional nutritionist"
                   className="w-full h-full object-cover rounded-2xl shadow-2xl"
                 />

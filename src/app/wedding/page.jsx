@@ -115,7 +115,6 @@ const Wedding = () => {
                 >
                   Start Your Glow-Up
                 </Button>
-              
               </div>
             </div>
             <div className="relative">
@@ -145,16 +144,26 @@ const Wedding = () => {
             {features.map((feature, index) => (
               <Card
                 key={index}
-                className="border-0 shadow-lg hover:shadow-xl transition-shadow"
+                className="border-0 shadow-lg hover:shadow-xl transition-shadow flex flex-col items-center py-8 px-4 bg-card"
               >
-                <CardHeader className="text-center">
-                  <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                    <feature.icon className="w-8 h-8 text-primary-foreground" />
+                <div className="flex flex-col items-center mb-4">
+                  <div
+                    className={`w-16 h-16 rounded-full flex items-center justify-center mb-3 shadow-lg ${
+                      index === 0
+                        ? "bg-gradient-to-br from-primary to-accent"
+                        : index === 1
+                        ? "bg-gradient-to-br from-accent to-secondary"
+                        : "bg-gradient-to-br from-secondary to-primary"
+                    }`}
+                  >
+                    <feature.icon className="w-8 h-8 text-white" />
                   </div>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-center text-muted-foreground">
+                  <CardTitle className="text-xl font-bold text-primary mb-2 text-center">
+                    {feature.title}
+                  </CardTitle>
+                </div>
+                <CardContent className="px-0">
+                  <CardDescription className="text-center text-muted-foreground text-base">
                     {feature.description}
                   </CardDescription>
                 </CardContent>
@@ -194,15 +203,20 @@ const Wedding = () => {
               key={index}
               className="relative flex flex-col justify-between rounded-xl border shadow-lg hover:shadow-2xl transition-all duration-300"
             >
-              {/* Top Ribbon */}
+              {/* Top Ribbon always visually on top */}
               <div
-                className={`absolute top-0 left-0 right-0 text-center py-2 text-white text-sm font-semibold rounded-t-xl ${
-                  ribbonColors[index % ribbonColors.length]
+                className={`absolute top-0 left-0 right-0 z-10 text-center py-2 ribbon-shimmer text-white text-sm font-semibold rounded-t-xl ${
+                  index === 0
+                    ? "bg-emerald-400"
+                    : index === 1
+                    ? "bg-emerald-500"
+                    : index === 2
+                    ? "bg-emerald-600"
+                    : "bg-emerald-700"
                 }`}
               >
                 {ribbons[index % ribbons.length]}
               </div>
-
               <CardContent className="pt-14 pb-6 px-6 flex flex-col h-full">
                 {/* Title */}
                 <h3 className="text-xl font-bold text-center mb-4">
