@@ -50,7 +50,7 @@ const TestimonialsSection = () => {
       name: "Priya Sharma",
       location: "Mumbai",
       weight: "Lost 15 kg",
-      text: "Poonam's personalized diet plan transformed my life. I not only lost weight but gained confidence and energy!",
+      text: "Nutri Coach's personalized diet plan transformed my life. I not only lost weight but gained confidence and energy!",
       rating: 5,
       photo: "/p1.png"
     },

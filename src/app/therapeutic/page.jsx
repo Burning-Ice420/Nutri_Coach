@@ -110,18 +110,19 @@ const Therapeutic = () => {
     },
   ];
 
-  const ribbons = [
-    "LIMITED OFFER!",
-    "MOST POPULAR!",
-    "PREMIUM!",
-    "MOST EFFECTIVE!",
-  ];
-  const ribbonColors = [
-    "bg-emerald-600",
-    "bg-orange-600",
-    "bg-teal-600",
-    "bg-orange-700",
-  ];
+const ribbons = [
+  "LIMITED OFFER!",   // cheapest
+  "MOST POPULAR!",    // mid
+  "PREMIUM!",         // higher
+  "MOST EFFECTIVE!",  // highest
+];
+
+const ribbonColors = [
+  "bg-emerald-400", // light green = entry level
+  "bg-emerald-500", // medium green
+  "bg-emerald-600", // darker green
+  "bg-emerald-700", // deep premium green
+];
 
   return (
     <div className="min-h-screen">
@@ -150,16 +151,7 @@ const Therapeutic = () => {
                 >
                   Get Medical Support
                 </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="text-lg px-8 py-4"
-                  onClick={() => {
-                    window.location.href = "#plans-section";
-                  }}
-                >
-                  Learn About Conditions
-                </Button>
+               
               </div>
             </div>
             <div className="relative">
@@ -244,7 +236,7 @@ const Therapeutic = () => {
             >
               {/* Top Ribbon */}
               <div
-                className={`absolute top-0 left-0 right-0 text-center py-2 text-white text-sm font-semibold rounded-t-xl ${
+                className={`absolute top-0 left-0  right-0 text-center py-2 ribbon-shimmer text-white text-sm font-semibold rounded-t-xl ${
                   ribbonColors[index % ribbonColors.length]
                 }`}
               >

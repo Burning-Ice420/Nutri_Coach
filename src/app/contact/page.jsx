@@ -22,12 +22,24 @@ const Contact = () => {
       subtitle: "Call us anytime",
     },
     {
+      icon: Phone,
+      title: "Lalita Sharma (Official)",
+      details: "+91 88399 54900",
+      subtitle: "Official Number",
+    },
+    {
+      icon: Phone,
+      title: "Ritika Bhatnagar (Official)",
+      details: "8963874732",
+      subtitle: "Official Number",
+    },
+    {
       icon: Mail,
       title: "Email",
-      details: "hello@dtpoonamsagar.com",
+      details: "hello@NutriCoach.com",
       subtitle: "24/7 support",
     },
- 
+
     {
       icon: Clock,
       title: "Hours",
@@ -65,11 +77,38 @@ const Contact = () => {
         </div>
       </section>
 
+      {/* Official Numbers Section */}
+      <section className="py-8 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mx-auto bg-card rounded-2xl shadow-lg p-8 mb-8">
+            <h2 className="text-2xl font-bold mb-4 text-primary text-center">
+              Official Contact Numbers
+            </h2>
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
+                <span className="font-semibold text-lg text-card-foreground">
+                  Lalita Sharma (Official):
+                </span>
+                <span className="text-primary text-lg font-bold">
+                  +91 8839954900
+                </span>
+              </div>
+              <div className="flex items-center gap-4">
+                <span className="font-semibold text-lg text-card-foreground">
+                  Ritika Bhatnagar (Official):
+                </span>
+                <span className="text-primary text-lg font-bold">
+                  +91 8963874732
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Info */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          
-
           {/* Contact Form */}
           <div className="max-w-4xl mx-auto">
             <Card className="border-0 shadow-2xl">

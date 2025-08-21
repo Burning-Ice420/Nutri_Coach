@@ -115,21 +115,12 @@ const Wedding = () => {
                 >
                   Start Your Glow-Up
                 </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="text-lg px-8 py-4"
-                  onClick={() => {
-                    window.location.href = "#plans-section";
-                  }}
-                >
-                  View Transformations
-                </Button>
+              
               </div>
             </div>
             <div className="relative">
               <img
-                src="/services/wedding.jpeg"
+                src="/wedding.jpg"
                 alt="Wedding Diet Consultation"
                 className="rounded-2xl shadow-2xl"
               />

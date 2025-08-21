@@ -43,12 +43,28 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-6">
               <Button
                 size="lg"
-                className="text-base px-8 py-4 bg-primary hover:bg-primary-light text-primary-foreground rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2"
+                className="relative overflow-hidden text-base px-8 py-4 
+             bg-gradient-to-r from-primary to-primary/90 
+             hover:from-primary/90 hover:to-primary 
+             text-white rounded-full font-semibold 
+             shadow-lg hover:shadow-xl 
+             transition-all duration-300 ease-in-out 
+             flex items-center justify-center gap-2 group"
                 onClick={handleFreeTrialClick}
               >
-                Start Your Journey
+                <span>Start your 7-day trial for just</span>
+
+                {/* Shimmer Price */}
+                <span
+                  className="relative font-extrabold text-lg bg-clip-text text-transparent 
+                   bg-gradient-to-r from-amber-300 via-white to-amber-300 
+                   animate-shimmer bg-[length:200%_100%]"
+                >
+                  ₹250
+                </span>
+
                 <svg
-                  className="w-4 h-4"
+                  className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -60,6 +76,13 @@ const HeroSection = () => {
                     d="M9 5l7 7-7 7"
                   />
                 </svg>
+              </Button>
+              <Button
+                onClick={() => (window.location.href = "/weightloss")}
+                className="relative font-extrabold text-lg px-8 py-4 bg-primary rounded-4xl text-white 
+                   "
+              >
+                Explore Weight Plans
               </Button>
             </div>
 
@@ -109,7 +132,7 @@ const HeroSection = () => {
               {/* Main Hero Image */}
               <div className="relative w-[200px] h-96 lg:w-full lg:h-[500px]">
                 <img
-                  src="/hero.png"
+                  src="/diet.png"
                   alt="Professional nutritionist"
                   className="w-full h-full object-cover rounded-2xl shadow-2xl"
                 />

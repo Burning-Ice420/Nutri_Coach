@@ -108,13 +108,7 @@ const PCOD = () => {
                 >
                   Start Your Healing
                 </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="text-lg px-8 py-4"
-                >
-                  Learn More
-                </Button>
+              
               </div>
             </div>
             <div className="relative">

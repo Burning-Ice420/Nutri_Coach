@@ -92,6 +92,8 @@ const WeightLoss = () => {
     },
   ];
 
+  // Professional Guarantee Section
+
   const features = [
     {
       icon: Scale,
@@ -151,6 +153,46 @@ const WeightLoss = () => {
               />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Guarantee Section */}
+      {/* Guarantee Section */}
+      <section className="py-16 bg-background">
+        <div
+          className="max-w-3xl mx-auto bg-gradient-to-r from-emerald-50 via-white to-emerald-50 
+                  rounded-3xl shadow-xl p-10 flex flex-col items-center justify-center text-center relative overflow-hidden"
+        >
+          {/* Soft decorative glow */}
+          <div className="absolute -top-12 -right-12 w-40 h-40 bg-emerald-200/40 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-12 -left-12 w-40 h-40 bg-green-300/30 rounded-full blur-3xl"></div>
+
+          {/* Badge */}
+          <span
+            className="px-4 py-1 text-xs font-semibold tracking-wide text-emerald-700 
+                     bg-emerald-100 rounded-full mb-4 shadow-sm"
+          >
+            Our Professional Promise
+          </span>
+
+          {/* Heading */}
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-foreground">
+            Weight Loss Management
+          </h2>
+
+          {/* Highlighted Guarantee */}
+          <span className="text-4xl md:text-5xl font-extrabold text-emerald-600 mb-4 block">
+            Guaranteed up to{" "}
+            <span className="bg-gradient-to-r from-green-600 to-emerald-400 bg-clip-text text-transparent">
+              5 kgs*
+            </span>
+          </span>
+
+          {/* Supporting text */}
+          <p className="text-base md:text-lg text-muted-foreground max-w-lg">
+            *Results may vary. Every plan is personalized with professional
+            guidance and long-term sustainability in mind.
+          </p>
         </div>
       </section>
 

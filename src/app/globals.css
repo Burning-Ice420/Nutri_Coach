@@ -142,3 +142,54 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+}
+
+.ribbon-shimmer {
+  background-image: linear-gradient(
+      105deg,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 0.69) 35%,
+      rgba(255, 255, 255, 0) 60%
+    );
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+.shimmer-container {
+  position: relative;
+  overflow: hidden; /* Important to hide the shimmer when it's outside the container */
+  /* Add dimensions and styling for your container */
+}
+
+
+
+.shimmer-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  background-size: 200% 100%; /* Make the gradient wider than the element */
+  animation: shimmer 1.5s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
